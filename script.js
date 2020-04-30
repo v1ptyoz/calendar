@@ -1,29 +1,65 @@
-function monthConvert(month) {
+function monthConvert(month, year) {
   switch (month) {
     case 1: 
-      return "Январь";
+      return {
+        month: "Январь",
+        days: 31
+      };
     case 2: 
-      return "Февраль";
+      return {
+        month: "Февраль",
+        days: isLeapYear(year) ? 29 : 28
+      };
     case 3: 
-      return "Март";
+      return {
+        month: "Март",
+        days: 31
+      };
     case 4: 
-      return "Апрель";
+      return { 
+        month: "Апрель",
+        days: 30
+      };
     case 5: 
-      return "Май";
+      return {
+        month: "Май",
+        days: 31
+      };
     case 6: 
-      return "Июнь";
+      return {
+        month: "Июнь",
+        days: 30
+      };
     case 7: 
-      return "Июль";
+      return {
+        month: "Июль",
+        days: 31
+      };
     case 8: 
-      return "Август";
+      return {
+        month: "Август",
+        days: 31
+      };
     case 9: 
-      return "Сентябрь";
+      return {
+        month: "Сентябрь",
+        days: 30
+      };
     case 10: 
-      return "Октябрь";
+      return {
+        month: "Октябрь",
+        days: 31
+      };
     case 11: 
-      return "Ноябрь";
+      return {
+        month: "Ноябрь",
+        days: 30
+      };
     case 12: 
-      return "Декабрь";
+      return {
+        month: "Декабрь",
+        days: 31
+      };
   }
 }
 
