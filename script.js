@@ -82,5 +82,25 @@ function dayOfWeek(year, month, day) {
   return new Date(Date.parse(`${year}-${month}-${day}`)).getDay();
 }
 
+function render() {
+  let mainDiv = document.querySelector(".main");
+  let currentDate = new Date();
+
+  for (let i = 0; i < 5; i++) {
+    let row = document.createElement("div");
+    row.classList.add("row", "row-"+(i+1));
+
+    for (let y = 0; y < 7; y++) {
+      let column = document.createElement("div");
+      column.classList.add("col", "col-"+(i+1)+(y+1));
+      row.appendChild(column);
+    }
+
+    mainDiv.appendChild(row);
+  }
+  
+}
+
+render();
 
 
