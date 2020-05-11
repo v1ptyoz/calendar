@@ -84,7 +84,6 @@ function dayOfWeek(year, month, day) {
 
 function renderCells() {
   let mainDiv = document.querySelector(".main");
-  let currentDate = new Date();
 
   for (let i = 0; i < 5; i++) {
     let row = document.createElement("div");
@@ -103,5 +102,27 @@ function renderCells() {
 
 renderCells();
 
+function renderCurrentDay() {
+  let currentDate = new Date();
+  let currentMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear());
+  let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+  console.log(firstDayOfMonth);
+  
+  let rows = document.querySelectorAll(".row");
+  let cols = document.querySelectorAll(".col");
+  let startCol;
+  
+  for (let i = 0; i < cols.length; i++) {
+    if (cols[i].classList.contains(`col-1${firstDayOfMonth}`)) {
+      startCol = cols[i];
+      break;
+    }
+  }
 
+  startCol.textContent = 1;
+  
+  console.log(startCol);
+  
+}
 
+renderCurrentDay();
