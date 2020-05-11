@@ -3,5 +3,21 @@
   margin: 0 auto;
   border: 1px solid black;
   padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
+.row {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(88, 87, 87);
+}
+
+.col {
+  width: 14%;
+  background-color: rgb(150, 150, 150);
+  border: 1px solid black;
+  overflow: hidden;
+}
