@@ -77,3 +77,10 @@ function isLeapYear(year) {
     return false;
   }
 }
+
+function dayOfWeek(year, month, day) {
+  return new Date(Date.parse(`${year}-${month}-${day}`)).getDay();
+}
+
+
+
