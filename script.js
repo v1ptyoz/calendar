@@ -104,11 +104,8 @@ renderCells();
 
 function renderCurrentDay() {
   let currentDate = new Date();
-  let currentMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear());
   let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
-  console.log(firstDayOfMonth);
   
-  let rows = document.querySelectorAll(".row");
   let cols = document.querySelectorAll(".col");
   let startCol;
   
@@ -120,9 +117,7 @@ function renderCurrentDay() {
   }
 
   startCol.textContent = 1;
-  
-  console.log(startCol);
-  
+    
 }
 
 renderCurrentDay();
