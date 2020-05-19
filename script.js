@@ -102,22 +102,28 @@ function renderCells() {
 
 renderCells();
 
-function renderCurrentDay() {
-  let currentDate = new Date();
+function renderDays(month, year) {
+  month = month || new Date().getMonth() + 1;
+  year = year || new Date().getFullYear();
+  let currentDate = new Date(Date.parse(`${year}-${month}-01`));
+  let daysInMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear()).days;
   let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
   
   let cols = document.querySelectorAll(".col");
-  let startCol;
+  let startCell;
+  let day = 1;
   
   for (let i = 0; i < cols.length; i++) {
     if (cols[i].classList.contains(`col-1${firstDayOfMonth}`)) {
-      startCol = cols[i];
-      break;
+      cols[i].textContent = day;
+      startCell = i;
     }
   }
 
-  startCol.textContent = 1;
+  do {
+    cols[++startCell].textContent = ++day;
+  } while (day <= daysInMonth);
     
 }
 
-renderCurrentDay();
+renderDays();
