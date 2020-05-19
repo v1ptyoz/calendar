@@ -114,11 +114,12 @@ function renderDays(month, year) {
   let day = 1;
   
   for (let i = 0; i < cols.length; i++) {
-    let currentDay = document.querySelector("current_day");
-    currentDay.classList.remove("current_day");
+    let currentDayElement = document.querySelector("current_day");
+    if (currentDayElement) {
+      currentDayElement.classList.remove("current_day");
+    }
     if (cols[i].classList.contains(`col-1${firstDayOfMonth}`)) {
       cols[i].textContent = day;
-      cols[i].classList.add("current_day");
       startCell = i;
     }
   }
@@ -126,7 +127,20 @@ function renderDays(month, year) {
   do {
     cols[++startCell].textContent = ++day;
   } while (day < daysInMonth);
+
+
     
 }
 
+function addClassforCurrentDay() {
+  let cols = document.querySelectorAll(".col");
+  for (let i = 0; i < cols.length; i++) {
+    if (cols[i].textContent == new Date().getDate()) {
+      cols[i].classList.add("current_day");
+      break;
+    }
+  }
+}
+
 renderDays();
+addClassforCurrentDay();
