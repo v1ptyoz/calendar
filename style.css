@@ -24,3 +24,9 @@
   padding-top: 2%;
   font-size: 40px;
 }
+
+.col-16, .col-17, .col-26, .col-27,
+.col-36, .col-37, .col-46, .col-47,
+.col-56, .col-57 {
+  background-color: rgb(240, 165, 165);
+}

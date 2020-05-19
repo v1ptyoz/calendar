@@ -122,7 +122,7 @@ function renderDays(month, year) {
 
   do {
     cols[++startCell].textContent = ++day;
-  } while (day <= daysInMonth);
+  } while (day < daysInMonth);
     
 }
 
