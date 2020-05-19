@@ -105,6 +105,7 @@ renderCells();
 function renderDays(month, year) {
   month = month || new Date().getMonth() + 1;
   year = year || new Date().getFullYear();
+  setTitle(monthConvert(month).month, year);
   let currentDate = new Date(Date.parse(`${year}-${month}-01`));
   let daysInMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear()).days;
   let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
@@ -142,6 +143,11 @@ function addClassforCurrentDay() {
       break;
     }
   }
+}
+
+function setTitle(month, year) {
+  let title = document.querySelector(".calendar_title");
+  title.textContent = `${month} ${year}`;
 }
 
 renderDays();

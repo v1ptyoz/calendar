@@ -34,3 +34,8 @@
 .current_day {
   background-color: rgb(120, 230, 166);
 }
+
+.calendar_title {
+  text-align: center;
+  color: #0717ff;
+}
