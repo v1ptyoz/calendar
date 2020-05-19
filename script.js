@@ -108,16 +108,18 @@ function renderDays(month, year) {
   let currentDate = new Date(Date.parse(`${year}-${month}-01`));
   let daysInMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear()).days;
   let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+
+  let currentDayElement = document.querySelector(".current_day");
+  if (currentDayElement) {
+    currentDayElement.classList.remove("current_day");
+  }
   
   let cols = document.querySelectorAll(".col");
   let startCell;
   let day = 1;
   
   for (let i = 0; i < cols.length; i++) {
-    let currentDayElement = document.querySelector("current_day");
-    if (currentDayElement) {
-      currentDayElement.classList.remove("current_day");
-    }
+    cols[i].textContent = "";
     if (cols[i].classList.contains(`col-1${firstDayOfMonth}`)) {
       cols[i].textContent = day;
       startCell = i;
