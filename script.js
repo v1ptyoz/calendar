@@ -1,3 +1,27 @@
+let prev = document.querySelector(".arrow_prev");
+let next = document.querySelector(".arrow_next");
+let now = new Date();
+
+prev.addEventListener("click", () => {
+  if (now.getMonth() == 0) {
+    now = new Date(Date.parse(`${now.getFullYear() - 1}-12-01`));
+  } else {
+    now = new Date(Date.parse(`${now.getFullYear()}-${now.getMonth()}-01`));
+  }
+  renderDays(now.getMonth() + 1, now.getFullYear());
+});
+
+next.addEventListener("click", () => {
+  if (now.getMonth() == 11) {
+    now = new Date(Date.parse(`${now.getFullYear() + 1}-01-01`));
+  } else {
+    now = new Date(Date.parse(`${now.getFullYear()}-${now.getMonth() + 2}-01`));
+  }
+  renderDays(now.getMonth() + 1, now.getFullYear());
+});
+
+
+
 function monthConvert(month, year) {
   switch (month) {
     case 1: 
@@ -103,12 +127,15 @@ function renderCells() {
 renderCells();
 
 function renderDays(month, year) {
-  month = month || new Date().getMonth() + 1;
-  year = year || new Date().getFullYear();
+  month = month || now.getMonth() + 1;
+  year = year || now.getFullYear();
   setTitle(monthConvert(month).month, year);
   let currentDate = new Date(Date.parse(`${year}-${month}-01`));
   let daysInMonth = monthConvert(currentDate.getMonth() + 1, currentDate.getFullYear()).days;
   let firstDayOfMonth = dayOfWeek(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+  if (firstDayOfMonth == 0) {
+    firstDayOfMonth = 7;  // fix for sundays
+  }
 
   let currentDayElement = document.querySelector(".current_day");
   if (currentDayElement) {
@@ -130,8 +157,6 @@ function renderDays(month, year) {
   do {
     cols[++startCell].textContent = ++day;
   } while (day < daysInMonth);
-
-
     
 }
 
@@ -152,3 +177,5 @@ function setTitle(month, year) {
 
 renderDays();
 addClassforCurrentDay();
+
+
